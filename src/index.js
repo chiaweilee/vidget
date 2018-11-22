@@ -13,19 +13,10 @@ const widgetByVue = function (options = {}, Vue) {
   }, options)
 
   // install, then init
-  install(init, Vue)
-
-  // @fn init
-  function init (Vue) {
-    render(Vue)
-  }
-
-  // @fn render
-  function render (Vue) {
-    if (!document.querySelector(opt.el)) return
+  install(function (Vue) {
     /* eslint-disable no-new */
     new Vue(opt)
-  }
+  }, Vue)
 }
 
 export default function (options, Vue) {
