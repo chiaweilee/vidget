@@ -1,9 +1,8 @@
 import install from './install'
 import router from './router'
 import { supportsPushState } from './router/utils'
-import test from './test.vue'
 
-const widgetsByVue = function (options = {}, Vue) {
+const widgetByVue = function (options = {}, Vue) {
   Vue = Vue || window.Vue
 
   // options
@@ -55,8 +54,9 @@ const widgetsByVue = function (options = {}, Vue) {
   }
 }
 
-export default window.widgetsByVue = widgetsByVue
-
-test.el = '#widget'
-
-widgetsByVue(test)
+export default function (options) {
+  window.widgetByVue = function () {
+    return widgetByVue(options)
+  }
+  return window.widgetByVue
+}
