@@ -4,7 +4,6 @@
 
 ```JavaScript
 widgetsByVue({
-    el: '#custom-widget',
     template: '<template>{{ Math.random() }}</template>'
 })
 ```
@@ -13,7 +12,6 @@ widgetsByVue({
 
 ```JavaScript
 widgetsByVue({
-    el: '#custom-widget',
     routes: [ ... ]
 })
 ```
@@ -29,6 +27,5 @@ widgetsByVue({
 
 ```JavaScript
 import test from './test.vue'
-// test.el = '#custom-widget' // optional
 widgetsByVue(test)
 ```

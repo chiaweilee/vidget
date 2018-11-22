@@ -6,7 +6,8 @@
     "vue-widget-cli": "bin/cli.js"
   },
   "scripts": {
-    "cli:test": "node bin/cli.js",
+    "dev": "vue-cli-service serve",
+    "cli:test": "node bin/cli.js --entry example/main.js",
     "lint": "eslint --ext .js,.vue,.json src --fix",
     "es5": "npx babel --no-babelrc src --out-dir lib",
     "test": "mocha",
@@ -26,13 +27,12 @@
   },
   "author": "+v",
   "license": "MIT",
-  "dependencies": {
-    "vue": "^2.5.17"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.5",
     "@vue/babel-preset-app": "^3.1.1",
+    "@vue/cli-service": "^3.1.4",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
@@ -55,6 +55,7 @@
     "postcss-loader": "^3.0.0",
     "remove-flow-types-loader": "^1.1.0",
     "sass-loader": "^7.0.1",
+    "vue": "^2.5.17",
     "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.5.17",

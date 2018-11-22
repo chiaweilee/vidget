@@ -21,9 +21,7 @@ const widgetByVue = function (options = {}, Vue) {
   function init (Vue) {
     Vue.use(router)
 
-    if (document.querySelector(opt.el)) {
-      render(Vue)
-    }
+    render(Vue)
 
     if (Vue && '$router' in Vue.prototype && '$route' in Vue.prototype) {
       // has Vue-router
@@ -37,6 +35,7 @@ const widgetByVue = function (options = {}, Vue) {
 
   // @fn render
   function render (Vue) {
+    if (!document.querySelector(opt.el)) return
     /* eslint-disable no-new */
     const widget = opt.routes instanceof Array
       // router mode
@@ -50,13 +49,15 @@ const widgetByVue = function (options = {}, Vue) {
       }
       // component mode
       : opt
-    new Vue(widget).$mount(opt.el)
+    new Vue(widget)
   }
 }
 
-export default function (options) {
-  window.widgetByVue = function () {
-    return widgetByVue(options)
+export default function (options, Vue) {
+  window.widgetByVue = function (el) {
+    if (!el) return
+    options.el = el
+    return widgetByVue(options, Vue)
   }
   return window.widgetByVue
 }
