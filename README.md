@@ -21,3 +21,35 @@ widgetsByVue({
 import test from './test.vue'
 widgetsByVue(test)
 ```
+
+#### Demo
+
+```json
+{
+    "scripts": {
+        "build:widget": "vue-widget --entry src/main.js"
+    }
+}
+```
+
+```JavaScript
+// src/main.js
+// import Vue from 'vue'
+import buildWidget from 'vue-widget'
+import test from './components/test'
+
+buildWidget(test)
+
+// add below if you wanna a autorun widget
+// window.widgetByVue('#widget', Vue)
+```
+
+```html
+<div id="widget"></div>
+<script src="http://www.xxx.com/widget.js"></script>
+<script>
+// widgetByVue will auto check window.Vue
+// Vue will be auto install, if not found
+window.widgetByVue('#widget')
+</script>
+```
