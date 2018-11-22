@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import widgetByVue from '../src'
+import buildWidget from '../src'
 import test from './components/test'
 
-widgetByVue(test)
+buildWidget(test)
 
 window.widgetByVue('#widget', Vue)
