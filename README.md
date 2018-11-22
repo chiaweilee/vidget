@@ -41,6 +41,10 @@ import test from './components/test'
 buildWidget(test)
 
 // add below if you wanna a autorun widget
+// you can build inner-build 'Vue' by passing 'Vue' with the sencond argv
+// if not,
+// widgetByVue will auto check window.Vue
+// Vue will be auto install though CDN, if not found
 // window.widgetByVue('#widget', Vue)
 ```
 
@@ -48,8 +52,6 @@ buildWidget(test)
 <div id="widget"></div>
 <script src="http://www.xxx.com/widget.js"></script>
 <script>
-// widgetByVue will auto check window.Vue
-// Vue will be auto install, if not found
 window.widgetByVue('#widget')
 </script>
 ```
