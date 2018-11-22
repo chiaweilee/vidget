@@ -1,0 +1,5 @@
+<template>
+  <div>
+    {{ Math.random() }}
+  </div>
+</template>

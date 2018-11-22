@@ -1,6 +1,7 @@
 import install from './install'
 import router from './router'
 import { supportsPushState } from './router/utils'
+import test from './test.vue'
 
 window.widgetsByVue = function (options = {}, Vue) {
   Vue = Vue || window.Vue
@@ -54,7 +55,6 @@ window.widgetsByVue = function (options = {}, Vue) {
   }
 }
 
-window.widgetsByVue({
-  el: '#widget',
-  template: '<div>test</div>'
-})
+test.el = '#widget'
+
+window.widgetsByVue(test)
