@@ -1,6 +1,4 @@
 import install from './install'
-import router from './router'
-import { supportsPushState } from './router/utils'
 
 const widgetByVue = function (options = {}, Vue) {
   Vue = Vue || window.Vue
@@ -19,37 +17,14 @@ const widgetByVue = function (options = {}, Vue) {
 
   // @fn init
   function init (Vue) {
-    Vue.use(router)
-
     render(Vue)
-
-    if (Vue && '$router' in Vue.prototype && '$route' in Vue.prototype) {
-      // has Vue-router
-    } else {
-      window.addEventListener(supportsPushState ? 'popstate' : 'hashchange', function () {
-        // try re-render
-        render(Vue)
-      })
-    }
   }
 
   // @fn render
   function render (Vue) {
     if (!document.querySelector(opt.el)) return
     /* eslint-disable no-new */
-    const widget = opt.routes instanceof Array
-      // router mode
-      ? {
-        template: '<widget-router-view/>',
-        data () {
-          return {
-            routes: opt.routes
-          }
-        }
-      }
-      // component mode
-      : opt
-    new Vue(widget)
+    new Vue(opt)
   }
 }
 

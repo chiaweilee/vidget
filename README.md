@@ -8,14 +8,6 @@ widgetsByVue({
 })
 ```
 
-#### Use widget-router
-
-```JavaScript
-widgetsByVue({
-    routes: [ ... ]
-})
-```
-
 #### Use *.vue
 
 ```vue.js
