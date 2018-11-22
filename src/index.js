@@ -3,7 +3,7 @@ import router from './router'
 import { supportsPushState } from './router/utils'
 import test from './test.vue'
 
-window.widgetsByVue = function (options = {}, Vue) {
+const widgetsByVue = function (options = {}, Vue) {
   Vue = Vue || window.Vue
 
   // options
@@ -55,6 +55,8 @@ window.widgetsByVue = function (options = {}, Vue) {
   }
 }
 
+export default window.widgetsByVue = widgetsByVue
+
 test.el = '#widget'
 
-window.widgetsByVue(test)
+widgetsByVue(test)
