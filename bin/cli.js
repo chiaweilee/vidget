@@ -13,10 +13,10 @@ function getEntry () {
     }
     return true
   })
-  return entry
+  return `${entry}`
 }
 
 (async () => {
-  const { stdout } = await execa.shell(`npx webpack ${path.join(__dirname, `../${getEntry()}`)} --config webpack.config.js`)
+  const { stdout } = await execa.shell(`npx webpack ${path.resolve(getEntry())} --config webpack.config.js`)
   process.stdout.write(`${stdout}\r\n`)
 })()
