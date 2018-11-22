@@ -4,6 +4,12 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   mode: 'production',
   // entry: './src/index.js',
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.min.js'
+    }
+  },
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')

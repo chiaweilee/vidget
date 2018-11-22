@@ -1,7 +1,9 @@
+import Vue from 'vue'
 import widgetByVue from '../src'
+import test from './components/test'
 
-widgetByVue({
-  template: '<div>test</div>'
-})
+widgetByVue(test)
 
-window.widgetByVue('#widget')
+console.log(Vue)
+
+window.widgetByVue('#widget', Vue)

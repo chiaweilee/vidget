@@ -53,10 +53,10 @@ const widgetByVue = function (options = {}, Vue) {
   }
 }
 
-export default function (options) {
+export default function (options, Vue) {
   window.widgetByVue = function (el) {
     if (el) options.el = el
-    return widgetByVue(options)
+    return widgetByVue(options, Vue)
   }
   return window.widgetByVue
 }
