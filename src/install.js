@@ -13,9 +13,9 @@ export default function (
     script.src = 'https://unpkg.com/vue/dist/vue.min.js'
     script.onload = script.onreadystatechange = function (): void {
       if (!this.readyState || this.readyState === 'loaded' || this.readyState === 'complete') {
-        callback(window.Vue)
         script.onload = script.onreadystatechange = null
         document.getElementsByTagName('head')[0].removeChild(script)
+        callback(window.Vue)
       }
     }
     document.getElementsByTagName('head')[0].appendChild(script)
