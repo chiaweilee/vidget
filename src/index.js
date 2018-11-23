@@ -1,6 +1,6 @@
 import install from './install'
 
-const widgetByVue = function (options = {}, Vue) {
+const vidget = function (options = {}, Vue) {
   Vue = Vue || window.Vue
 
   // options
@@ -20,9 +20,9 @@ const widgetByVue = function (options = {}, Vue) {
 }
 
 export default function (options, Vue) {
-  window.widgetByVue = function (el) {
+  window.vidget = function (el) {
     if (el) options.el = el
-    return widgetByVue(options, Vue)
+    return vidget(options, Vue)
   }
-  return window.widgetByVue
+  return window.vidget
 }
