@@ -1,14 +1,34 @@
-### Usage
+### Install
 
-#### Single component
-
-```JavaScript
-widgetsByVue({
-    template: '<template>{{ Math.random() }}</template>'
-})
+```
+npm install vidget
 ```
 
-#### Use *.vue
+*in package.json*
+
+```json
+{
+    "scripts": {
+        "build:widget": "vidget-cli --entry src/main.js --output dist/widget.js"
+    }
+}
+```
+
+### Usage
+
+#### Build Widget
+
+##### Single component
+
+```JavaScript
+import Vue from 'vue'
+import buildWidget from 'vidget'
+buildWidget({
+    template: '<template>{{ Math.random() }}</template>'
+}, Vue)
+```
+
+##### Use *.vue
 
 ```vue.js
 // test.vue
@@ -18,11 +38,13 @@ widgetsByVue({
 ```
 
 ```JavaScript
+import Vue from 'vue'
+import buildWidget from 'vidget'
 import test from './test.vue'
-widgetsByVue(test)
+buildWidget(test, Vue)
 ```
 
-#### Demo
+##### Demo
 
 *package.json*
 
@@ -35,18 +57,22 @@ widgetsByVue(test)
 ```
 
 ```JavaScript
-// src/main.js
-// import Vue from 'vue'
+import Vue from 'vue'
 import buildWidget from 'vidget'
 import test from './components/test'
 
 buildWidget(test)
 ```
 
+#### Widget Init
+
 ```html
 <div id="widget"></div>
 <script src="http://www.xxx.com/widget.js"></script>
 <script>
-window.vidget('#widget')
+window.vidget('#widget', {
+    // options
+    // get props.options at root component
+})
 </script>
 ```
