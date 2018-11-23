@@ -29,7 +29,7 @@ widgetsByVue(test)
 ```json
 {
     "scripts": {
-        "build:widget": "vue-widget --entry src/main.js --output dist/widget.js"
+        "build:widget": "vidget --entry src/main.js --output dist/widget.js"
     }
 }
 ```
@@ -37,7 +37,7 @@ widgetsByVue(test)
 ```JavaScript
 // src/main.js
 // import Vue from 'vue'
-import buildWidget from 'vue-widget'
+import buildWidget from 'vidget'
 import test from './components/test'
 
 buildWidget(test)

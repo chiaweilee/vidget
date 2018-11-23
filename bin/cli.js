@@ -37,3 +37,5 @@ const pathConf = getPathConf();
   const { stdout } = await execa.shell(`npx webpack ${path.resolve(pathConf.entry)} -o ${path.resolve(pathConf.output)} --config webpack.config.js`)
   process.stdout.write(`${stdout}\r\n`)
 })()
+
+process.exit(0)

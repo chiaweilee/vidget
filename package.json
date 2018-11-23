@@ -1,9 +1,10 @@
 {
-  "name": "vue-widget",
-  "version": "0.0.0",
+  "name": "vidget",
+  "version": "0.0.0-alpha",
   "main": "src/index.js",
+  "private": false,
   "bin": {
-    "vue-widget-cli": "bin/cli.js"
+    "vidget-cli": "bin/cli.js"
   },
   "scripts": {
     "dev": "vue-cli-service serve",
