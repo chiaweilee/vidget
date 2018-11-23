@@ -3,20 +3,37 @@
 const execa = require('execa')
 const path = require('path')
 
-function getEntry () {
+function getPathConf () {
   let entry = 'src/index.js'
+  let output = 'dist/widget.js'
   const argv = process.argv.slice(2)
   argv.every((arg, index) => {
-    if (arg === '--entry' && argv[index + 1]) {
-      entry = argv[index + 1]
-      return false
+    switch (arg) {
+      case '--entry':
+        if (argv[index + 1]) {
+          entry = argv[index + 1]
+          return false
+        }
+        return true
+      case '--ouput':
+        if (argv[index + 1]) {
+          output = argv[index + 1]
+          return false
+        }
+        return true
+      default:
+        return true
     }
-    return true
   })
-  return `${entry}`
+  return {
+    entry,
+    output
+  }
 }
 
+const pathConf = getPathConf();
+
 (async () => {
-  const { stdout } = await execa.shell(`npx webpack ${path.resolve(getEntry())} --config webpack.config.js`)
+  const { stdout } = await execa.shell(`npx webpack ${path.resolve(pathConf.entry)} -o ${path.resolve(pathConf.output)} --config webpack.config.js`)
   process.stdout.write(`${stdout}\r\n`)
 })()

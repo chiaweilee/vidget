@@ -24,10 +24,12 @@ widgetsByVue(test)
 
 #### Demo
 
+*package.json*
+
 ```json
 {
     "scripts": {
-        "build:widget": "vue-widget --entry src/main.js"
+        "build:widget": "vue-widget --entry src/main.js --output dist/widget.js"
     }
 }
 ```

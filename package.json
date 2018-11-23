@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vue-cli-service serve",
-    "cli:test": "node bin/cli.js --entry example/main.js",
+    "cli:test": "node bin/cli.js --entry example/main.js --output dist/widget.js",
     "lint": "eslint --ext .js,.vue,.json src --fix",
     "es5": "npx babel --no-babelrc src --out-dir lib",
     "test": "mocha",
