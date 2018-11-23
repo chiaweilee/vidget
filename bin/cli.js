@@ -34,8 +34,8 @@ function getPathConf () {
 const pathConf = getPathConf();
 
 (async () => {
-  const { stdout } = await execa.shell(`npx webpack ${path.resolve(pathConf.entry)} -o ${path.resolve(pathConf.output)} --config webpack.config.js`)
+  const cmd = `npx webpack ${path.resolve(pathConf.entry)} -o ${path.resolve(pathConf.output)} --config webpack.config.js`
+  process.stdout.write(`${cmd}\r\n`)
+  const { stdout } = await execa.shell(cmd)
   process.stdout.write(`${stdout}\r\n`)
 })()
-
-process.exit(0)

@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
@@ -63,6 +64,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new webpack.BannerPlugin({
+      banner: `${process.env.npm_package_name} v${process.env.npm_package_version}\n` +
+        '(c) 2018 +v\n' +
+        'Released under the MIT License.'
+    })
   ]
 }

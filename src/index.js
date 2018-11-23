@@ -1,28 +1,29 @@
-import install from './install'
+import { assert } from './utils/warn'
 
-const vidget = function (options = {}, Vue) {
-  Vue = Vue || window.Vue
+const vidget = function (component = {}, Vue, options = {}) {
+  assert(Vue, 'require Vue')
+  assert(Vue && /^2\.\d+\.\d+$/.test(Vue.version), `require version 2+ of Vue, but ${Vue.version} was found.`)
+  assert(typeof component === 'object' && !(component instanceof Array), 'component must be an object')
+  assert(typeof options === 'object' && !(options instanceof Array), 'options must be an object')
+  assert(!(component.props && component.props.options), '\'props.options\' is reserved on root component, do not use it')
 
-  // options
-  if (typeof options !== 'object' && !(options instanceof Array)) {
-    return
-  }
-
-  const opt = Object.assign({
+  /* eslint-disable no-new */
+  new Vue(Object.assign({
     el: '#widget'
-  }, options)
-
-  // install, then init
-  install(function (Vue) {
-    /* eslint-disable no-new */
-    new Vue(opt)
-  }, Vue)
+  }, Object.assign(component, {
+    props: {
+      options: {
+        type: Object,
+        default: () => options
+      }
+    }
+  })))
 }
 
-export default function (options, Vue) {
-  window.vidget = function (el) {
-    if (el) options.el = el
-    return vidget(options, Vue)
+export default function (component, Vue) {
+  window.vidget = function (el, options) {
+    if (el) component.el = el
+    return vidget(component, Vue, options)
   }
   return window.vidget
 }

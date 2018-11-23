@@ -9,6 +9,9 @@ import tabs from './tabs'
 export default {
   components: {
     tabs
+  },
+  mounted () {
+    console.log(this.options)
   }
 }
 </script>
