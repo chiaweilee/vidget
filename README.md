@@ -1,3 +1,14 @@
+## Vidget
+---
+
+<a href="https://npmcharts.com/compare/vidget?minimal=true"><img src="https://img.shields.io/npm/dm/vidget.svg" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/vidget"><img src="https://img.shields.io/npm/v/vidget.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/vidget"><img src="https://img.shields.io/npm/l/vidget.svg" alt="License"></a>
+
+### Demo
+
+*Demo code see* [@chiaweilee/vidget-demo](https://github.com/chiaweilee/vidget-demo)
+
 ### Install
 
 ```
