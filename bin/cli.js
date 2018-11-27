@@ -1,41 +1,52 @@
 #!/usr/bin/env node
 
-const execa = require('execa')
-const path = require('path')
+'use strict'
 
-function getPathConf () {
-  let entry = 'src/index.js'
-  let output = 'dist/widget.js'
-  const argv = process.argv.slice(2)
-  argv.every((arg, index) => {
-    switch (arg) {
-      case '--entry':
-        if (argv[index + 1]) {
-          entry = argv[index + 1]
-          return false
-        }
-        return true
-      case '--ouput':
-        if (argv[index + 1]) {
-          output = argv[index + 1]
-          return false
-        }
-        return true
-      default:
-        return true
+// Makes the script crash on unhandled rejections instead of silently
+// ignoring them. In the future, promise rejections that are not handled will
+// terminate the Node.js process with a non-zero exit code.
+process.on('unhandledRejection', err => {
+  throw err
+})
+
+const spawn = require('cross-spawn')
+const args = process.argv.slice(2)
+const scriptIndex = args.findIndex(
+  x => x === 'build' || x === 'eject' || x === 'start' || x === 'test'
+)
+const script = scriptIndex === -1 ? args[0] : args[scriptIndex]
+const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : []
+
+switch (script) {
+  case 'build': {
+    const result = spawn.sync(
+      'node',
+      nodeArgs
+        .concat(require('path').resolve('./node_modules/vidget/scripts/' + script))
+        .concat(args.slice(scriptIndex + 1)),
+      { stdio: 'inherit' }
+    )
+    if (result.signal) {
+      if (result.signal === 'SIGKILL') {
+        console.log(
+          'The build failed because the process exited too early. ' +
+          'This probably means the system ran out of memory or someone called ' +
+          '`kill -9` on the process.'
+        )
+      } else if (result.signal === 'SIGTERM') {
+        console.log(
+          'The build failed because the process exited too early. ' +
+          'Someone might have called `kill` or `killall`, or the system could ' +
+          'be shutting down.'
+        )
+      }
+      process.exit(1)
     }
-  })
-  return {
-    entry,
-    output
+    process.exit(result.status)
+    // eslint-disable-next-line
+    break
   }
+  default:
+    console.log(`Unknown script "${script}".`)
+    break
 }
-
-const pathConf = getPathConf();
-
-(async () => {
-  const cmd = `npx webpack ${path.resolve(pathConf.entry)} -o ${path.resolve(pathConf.output)} --config webpack.config.js`
-  process.stdout.write(`${cmd}\r\n`)
-  const { stdout } = await execa.shell(cmd)
-  process.stdout.write(`${stdout}\r\n`)
-})()

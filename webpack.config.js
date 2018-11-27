@@ -33,8 +33,8 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader',
-          'postcss-loader'
+          'css-loader'// ,
+          // 'postcss-loader'
         ]
       },
       {
@@ -42,7 +42,7 @@ module.exports = {
         use: [
           'vue-style-loader',
           'css-loader',
-          'postcss-loader',
+          // 'postcss-loader',
           'sass-loader'
         ]
       },

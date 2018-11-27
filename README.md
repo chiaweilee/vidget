@@ -44,17 +44,23 @@ import test from './test.vue'
 buildWidget(test, Vue)
 ```
 
-##### Demo
+##### Cli
 
 *package.json*
 
 ```json
 {
     "scripts": {
-        "build:widget": "vidget --entry src/main.js --output dist/widget.js"
+        "build": "vidget-cli build --entry src/main.js --output dist/widget.js"
     }
 }
 ```
+
+```
+npm run build
+```
+
+##### Demo
 
 ```JavaScript
 import Vue from 'vue'

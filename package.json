@@ -1,14 +1,14 @@
 {
   "name": "vidget",
-  "version": "0.0.0-gamma",
+  "version": "0.0.0-zeta",
   "main": "src/index.js",
   "private": false,
   "bin": {
-    "vidget-cli": "bin/cli.js"
+    "vidget-cli": "./bin/cli.js"
   },
   "scripts": {
     "dev": "vue-cli-service serve",
-    "cli:test": "node bin/cli.js --entry example/main.js --output dist/widget.js",
+    "cli:test": "node bin/cli.js build --entry example/main.js --output dist/widget.js",
     "lint": "eslint --ext .js,.vue,.json src --fix",
     "es5": "npx babel --no-babelrc src --out-dir lib",
     "test": "mocha",

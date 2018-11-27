@@ -6,7 +6,6 @@ yarn-error.log
 .vscode/
 build/
 dist/
-scripts/
 .babelrc
 .editorconfig
 .eslintignore
