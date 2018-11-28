@@ -18,10 +18,12 @@ const script = scriptIndex === -1 ? args[0] : args[scriptIndex]
 const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : []
 
 switch (script) {
+  case 'serve':
   case 'build': {
     const result = spawn.sync(
       'node',
       nodeArgs
+        // .concat(require('path').resolve('./scripts/' + script)) // test only
         .concat(require('path').resolve('./node_modules/vidget/scripts/' + script))
         .concat(args.slice(scriptIndex + 1)),
       { stdio: 'inherit' }

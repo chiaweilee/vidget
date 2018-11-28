@@ -1,14 +1,15 @@
 {
   "name": "vidget",
-  "version": "0.0.0-eta",
+  "version": "0.0.0-theta",
   "main": "src/index.js",
   "private": false,
   "bin": {
     "vidget-cli": "./bin/cli.js"
   },
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "cli:test": "node bin/cli.js build --entry example/main.js --output dist/widget.js",
+    "serve": "vue-cli-service serve",
+    "test:cli-build": "node bin/cli.js build --entry example/main.js --output dist/widget.js",
+    "test:cli-dev": "node bin/cli.js serve example/main.js",
     "lint": "eslint --ext .js,.vue,.json src --fix",
     "es5": "npx babel --no-babelrc src --out-dir lib",
     "test": "mocha",
@@ -39,6 +40,7 @@
     "babel-loader": "^8.0.4",
     "babel-preset-flow": "^6.23.0",
     "css-loader": "^1.0.1",
+    "flow-remove-types": "^1.2.3",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
     "remove-flow-types-loader": "^1.1.0",
@@ -58,10 +60,8 @@
     "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-vue": "^4.7.1",
     "flow-bin": "^0.86.0",
-    "flow-remove-types": "^1.2.3",
     "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
-    "url-loader": "^1.1.2",
-    "vant": "^1.4.4"
+    "url-loader": "^1.1.2"
   }
 }

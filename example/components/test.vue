@@ -1,19 +1,11 @@
 <template>
   <div class="widget">
-    <tabs/>
+    {{ options }}
   </div>
 </template>
 
 <script>
-import tabs from './tabs'
-export default {
-  components: {
-    tabs
-  },
-  mounted () {
-    console.log(this.options)
-  }
-}
+export default {}
 </script>
 
 <style>
