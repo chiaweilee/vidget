@@ -1,6 +1,6 @@
 {
   "name": "vidget",
-  "version": "0.0.0-zeta",
+  "version": "0.0.0-eta",
   "main": "src/index.js",
   "private": false,
   "bin": {
@@ -39,7 +39,6 @@
     "babel-loader": "^8.0.4",
     "babel-preset-flow": "^6.23.0",
     "css-loader": "^1.0.1",
-    "file-loader": "^2.0.0",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
     "remove-flow-types-loader": "^1.1.0",
@@ -62,6 +61,7 @@
     "flow-remove-types": "^1.2.3",
     "lint-staged": "^7.3.0",
     "mocha": "^5.2.0",
+    "url-loader": "^1.1.2",
     "vant": "^1.4.4"
   }
 }
