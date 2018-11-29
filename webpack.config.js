@@ -48,18 +48,24 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'file-loader',
-        options: {}
+        loader: 'url-loader',
+        options: {
+          limit: 9007199254740990
+        }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'file-loader',
-        options: {}
+        loader: 'url-loader',
+        options: {
+          limit: 9007199254740990
+        }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'file-loader',
-        options: {}
+        loader: 'url-loader',
+        options: {
+          limit: 9007199254740990
+        }
       }
     ]
   },
