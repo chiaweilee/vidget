@@ -1,6 +1,6 @@
 {
   "name": "vidget",
-  "version": "0.0.0-theta",
+  "version": "0.0.0-iota",
   "main": "src/index.js",
   "private": false,
   "bin": {
