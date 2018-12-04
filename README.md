@@ -41,7 +41,22 @@ buildWidget({
 import Vue from 'vue'
 import buildWidget from 'vidget'
 import test from './test.vue'
+
 buildWidget(test, Vue)
+```
+
+##### Use mixin
+
+```JavaScript
+const i18n = new VueI18n({
+  locale: 'en',
+  messages: {}
+})
+
+buildWidget(test, Vue, {
+    // mixin
+    i18n
+})
 ```
 
 ##### Cli

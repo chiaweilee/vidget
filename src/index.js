@@ -28,13 +28,17 @@ const vidget = function (component = {}, Vue, options = {}) {
   // })
 }
 
-export default function (comp, Vue) {
+export default function (comp, Vue, mixin = {}) {
   const init = function (el, options) {
     // must use clone to avoid
     // component been destroyed
     // when re-init
     const component = clone(comp)
     if (el) component.el = el
+    // mixin
+    Object.keys(mixin).forEach(_ => {
+      component[_] = mixin[_]
+    })
     return vidget(component, Vue, options)
   }
 
