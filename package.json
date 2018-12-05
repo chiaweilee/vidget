@@ -1,6 +1,6 @@
 {
   "name": "vidget",
-  "version": "0.0.3",
+  "version": "0.0.3-beta",
   "main": "src/index.js",
   "private": false,
   "bin": {

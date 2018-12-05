@@ -1,4 +1,4 @@
-module.exports = function formatStats (stats, dir, api) {
+module.exports = function formatStats (stats, dir) {
   const fs = require('fs')
   const path = require('path')
   const zlib = require('zlib')
@@ -40,7 +40,7 @@ module.exports = function formatStats (stats, dir, api) {
   }
 
   function getGzippedSize (asset) {
-    const filepath = api.resolve(path.join(dir, asset.name))
+    const filepath = path.resolve(path.join(dir, asset.name))
     const buffer = fs.readFileSync(filepath)
     return formatSize(zlib.gzipSync(buffer).length)
   }

@@ -54,7 +54,7 @@ if (pathConf.entry) {
 }
 
 if (pathConf.output) {
-  const [dir, filename] = pathConf.output.split('/')
+  const [dir, filename] = [ path.dirname(pathConf.output), path.basename(pathConf.output) ]
   config.output = {
     filename: filename,
     path: path.resolve(dir)
@@ -122,7 +122,7 @@ build()
       process.stderr.write(warnings)
     } else {
       const formatStats = require('./formatStats')
-      const targetDirShort = path.resolve(pathConf.entry)
+      const targetDirShort = path.dirname(pathConf.output)
 
       console.log(`\n${formatStats(stats, targetDirShort)}`)
       console.log(
