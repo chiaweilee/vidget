@@ -1,6 +1,5 @@
 import { assert } from './utils/warn'
 import { clone } from './utils/clone'
-// import setupListennerss from './utils/setupListennerss'
 
 let widget
 
@@ -22,10 +21,25 @@ const vidget = function (component = {}, Vue, options = {}) {
     }
   })))
 
-  // setupListennerss(function () {
-  //   console.log(this)
-  //   console.log(arguments)
-  // })
+  const observer = new MutationObserver(([ e ]) => {
+    const { removedNodes } = e
+    if (removedNodes.length) {
+      removedNodes.forEach(node => {
+        if (node === widget.$el) {
+          // $el removed
+          if (!widget._isDestroyed) {
+            // not destroyed, destroy it
+            widget.$destroy()
+            widget = widget.$el = null
+            observer.disconnect()
+          }
+        }
+      })
+    }
+  })
+  observer.observe(widget.$el.parentNode, {
+    childList: true
+  })
 }
 
 export default function (comp, Vue, mixin = {}) {
