@@ -34,6 +34,7 @@ const vidget = function (component = {}, Vue, options = {}) {
             observer.disconnect()
           }
         }
+        node = null
       })
     }
   })
