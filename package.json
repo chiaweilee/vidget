@@ -7,7 +7,7 @@
     "vidget-cli": "./bin/cli.js"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve example/main.js",
     "test:cli-build": "node bin/cli.js build --entry example/main.js --output dist/widget.js",
     "test:cli-dev": "node bin/cli.js serve example/main.js",
     "lint": "eslint --ext .js,.vue,.json src --fix",
