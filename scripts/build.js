@@ -121,6 +121,10 @@ build()
     if (warnings.length > 0) {
       process.stderr.write(warnings)
     } else {
+      const formatStats = require('./formatStats')
+      const targetDirShort = path.resolve(pathConf.entry)
+
+      console.log(`\n${formatStats(stats, targetDirShort)}`)
       console.log(
         chalk.green(
           `\nCompilation success (hash: ${stats.hash}),\n` +
