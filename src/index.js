@@ -21,26 +21,43 @@ const vidget = function (component = {}, Vue, options = {}) {
     }
   })))
 
-  const observer = new MutationObserver(([ e ]) => {
-    const { removedNodes } = e
-    if (removedNodes.length) {
-      removedNodes.forEach(node => {
-        if (node === widget.$el) {
-          // $el removed
-          if (!widget._isDestroyed) {
-            // not destroyed, destroy it
-            widget.$destroy()
-            widget = widget.$el = null
-            observer.disconnect()
-          }
-        }
-        node = null
-      })
+  const $destroyWidget = callback => {
+    if (!widget._isDestroyed) {
+      // not destroyed, destroy it
+      widget.$destroy()
+      widget = widget.$el = null
+      if (typeof callback === 'function') callback()
     }
-  })
-  observer.observe(widget.$el.parentNode, {
-    childList: true
-  })
+  }
+
+  // watch node removed and self-destroy
+  if (MutationObserver) {
+    const observer = new MutationObserver(([ e ]) => {
+      const { removedNodes } = e
+      if (removedNodes.length) {
+        removedNodes.forEach(node => {
+          if (node === widget.$el) {
+            // $el removed
+            $destroyWidget(() => {
+              observer.disconnect()
+            })
+          }
+          node = null
+        })
+      }
+    })
+    observer.observe(widget.$el.parentNode, {
+      childList: true
+    })
+  } else {
+    // IE 9, 10
+    widget.$el.parentNode.addEventListener('DOMNodeRemoved', ({ target }) => {
+      if (target === widget.$el) {
+        $destroyWidget()
+        target = null
+      }
+    })
+  }
 }
 
 export default function (comp, Vue, mixin = {}) {
