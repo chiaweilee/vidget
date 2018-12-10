@@ -1,4 +1,7 @@
 ## Vidget
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/chiaweilee/vidget.svg)](https://greenkeeper.io/)
+
 ---
 
 <a href="https://npmcharts.com/compare/vidget?minimal=true"><img src="https://img.shields.io/npm/dm/vidget.svg" alt="Downloads"></a>
